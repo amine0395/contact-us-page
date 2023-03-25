@@ -24,6 +24,7 @@ def login():
         if gender == "null":
             gender="unidentified"
         connection.sendmail(from_addr=Ur_email, to_addrs=Dest_email,msg="".join(("subject: client message \n \n ","name:",user,"  gender=",gender,"\n email:",email,"\n message:",text)).encode('utf-8'))
+        connection.close()
         return redirect(url_for("user",usr=user))
     else:
         return render_template("index.html",year=datetime.date.today().year)
